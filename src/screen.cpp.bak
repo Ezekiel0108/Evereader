@@ -1,0 +1,60 @@
+#include <Arduino.h>
+#include <GxEPD2_BW.h>
+#include <Fonts/FreeMonoBold9pt7b.h>
+
+// SAFE NEUTRAL PINS: Away from boot strapping and built-in LEDs
+#define CS_PIN   10
+#define DC_PIN   9
+#define RES_PIN  5  // Physical wire to GPIO 1
+#define BUSY_PIN 4  // Physical wire to GPIO 2
+
+#define SCLK_PIN 12
+#define MOSI_PIN 11
+
+GxEPD2_BW<GxEPD2_420_GDEY042T81, GxEPD2_420_GDEY042T81::HEIGHT> display(
+    GxEPD2_420_GDEY042T81(CS_PIN, DC_PIN, RES_PIN, BUSY_PIN)
+);
+
+const char HelloWorld[] = "Testing Screen Only!";
+
+void setup() {
+  Serial.begin(115200);
+  for(int i = 3; i > 0; i--) { delay(1000); }
+  
+  Serial.println("\n--- STANDALONE SCREEN DIAGNOSTIC ---");
+
+  // Explicitly set the BUSY pin as an input with an internal pull-up 
+  // This prevents the ESP32 from reading a "floating" random value
+  pinMode(BUSY_PIN, INPUT_PULLUP);
+
+  // Initialize the global SPI bus manually at a safer breadboard clock rate
+  Serial.println("[1] Starting SPI Clock...");
+  SPI.begin(SCLK_PIN, -1, MOSI_PIN, CS_PIN);
+  
+  Serial.println("[2] Initializing SSD1683 Display Driver...");
+  // 115200 serial speed, reset duration true, 50ms delay, use custom SPI settings
+  display.init(115200, true, 50, false);
+  
+  // Force the library to use a stable 2MHz speed for this test
+  display.epd2.selectSPI(SPI, SPISettings(2000000, MSBFIRST, SPI_MODE0));
+
+  Serial.println("[3] Executing full page refresh...");
+  display.setRotation(1);
+  display.setFont(&FreeMonoBold9pt7b);
+  display.setTextColor(GxEPD_BLACK);
+  
+  display.setFullWindow();
+  display.firstPage();
+  do {
+    display.fillScreen(GxEPD_WHITE);
+    display.setCursor(20, 50);
+    display.print(HelloWorld);
+  } while (display.nextPage());
+
+  Serial.println("[SUCCESS] Render committed. Hibernating.");
+  display.hibernate(); 
+}
+
+void loop() {
+  // Silent
+}
