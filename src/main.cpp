@@ -61,37 +61,43 @@ void setup() {
     Serial.println("[ERROR]: Mount Failed. Board is physically unresponsive.");
     return;
   }
-  Serial.println("[SUCCESS]: Card Mounted!");
 
-  Serial.println("Executing full page refresh...");
+  Serial.println("[SUCCESS]: Card Mounted!");
+  uint64_t cardSize = SD.cardSize() / (1024 * 1024);
+
+
+  Serial.println("Executing full left page refresh...");
   displayLeft.setRotation(1);
   displayLeft.setFont(&OxProto_Regular14pt7b);
   displayLeft.setTextColor(GxEPD_BLACK);
-
   displayLeft.setFullWindow();
   displayLeft.firstPage();
 
-  displayRight.setRotation(1);
-  displayRight.setFont(&OxProto_Regular14pt7b);
-  displayRight.setTextColor(GxEPD_BLACK);
-
-  displayRight.setFullWindow();
-  displayRight.firstPage();
-
-  uint64_t cardSize = SD.cardSize() / (1024 * 1024);
-
+  Serial.println("Printing to left screen");
   do {
     displayLeft.fillScreen(GxEPD_WHITE);
     displayLeft.setCursor(20, 50);
     displayLeft.printf("Size: %llu MB", cardSize);
 
+  } while (displayLeft.nextPage());
+
+  displayLeft.hibernate();
+
+  Serial.println("Executing full right page refresh...");
+  displayRight.setRotation(1);
+  displayRight.setFont(&OxProto_Regular14pt7b);
+  displayRight.setTextColor(GxEPD_BLACK);
+  displayRight.setFullWindow();
+  displayRight.firstPage();
+
+  Serial.println("Printing to right screen");
+  do {
     displayRight.fillScreen(GxEPD_WHITE);
     displayRight.setCursor(20, 50);
     displayRight.printf("Initializing right display after left");
 
-  } while (displayLeft.nextPage());
-  
-  displayLeft.hibernate();
+  } while (displayRight.nextPage());
+
   displayRight.hibernate();
 
   Serial.printf("Size: %llu MB\n", cardSize);
