@@ -1,52 +1,62 @@
 #include <Arduino.h>
 #include <GxEPD2_BW.h>
-#include <Fonts/FreeMonoBold9pt7b.h>
 #include <FS.h>
 #include <SD.h>
 #include <SPI.h>
+#include <OxProto_Regular14pt7b.h>
 
 // Shared SPI pins
 #define SPI_SCK  12
 #define SPI_MISO 13
 #define SPI_MOSI 11
 
-// Individual Chip Selects
+// Sd specific pins
 #define SD_CS_PIN     6
-#define SCREEN_CS_PIN 10
 
-// Screen control pins (Using your verified working pins!)
-#define DC_PIN   9
-#define RES_PIN  5
-#define BUSY_PIN 4
+//Left screen pin definitions
+#define DC_L_PIN   9
+#define RES_L_PIN  5
+#define BUSY_L_PIN 4
+#define SCREEN_L_CS_PIN 10
 
-// FIX 1: Instantiate the ONE shared custom SPI bus object
+//Right screen pin definitions
+#define DC_R_PIN   8
+#define RES_R_PIN  3
+#define BUSY_R_PIN 18
+#define SCREEN_R_CS_PIN 7
+
 SPIClass sharedSpi = SPIClass(FSPI);
 
-// Initializing screen on pins
-GxEPD2_BW<GxEPD2_420_GDEY042T81, GxEPD2_420_GDEY042T81::HEIGHT> display(
-    GxEPD2_420_GDEY042T81(SCREEN_CS_PIN, DC_PIN, RES_PIN, BUSY_PIN)
+// Left display init
+GxEPD2_BW<GxEPD2_420_GDEY042T81, GxEPD2_420_GDEY042T81::HEIGHT> displayLeft(
+    GxEPD2_420_GDEY042T81(SCREEN_L_CS_PIN, DC_L_PIN, RES_L_PIN, BUSY_L_PIN)
 );
+
+//Right display init
+GxEPD2_BW<GxEPD2_420_GDEY042T81, GxEPD2_420_GDEY042T81::HEIGHT> displayRight(
+    GxEPD2_420_GDEY042T81(SCREEN_R_CS_PIN, DC_R_PIN, RES_R_PIN, BUSY_R_PIN)
+);
+
 
 void setup() {
   Serial.begin(115200);
   for(int i = 3; i > 0; i--) { delay(1000); }
   
-  // Redundant software pull-ups
   pinMode(SPI_MISO, INPUT_PULLUP);
-  pinMode(BUSY_PIN, INPUT_PULLUP);
+  pinMode(BUSY_L_PIN, INPUT_PULLUP);
+  pinMode(BUSY_R_PIN, INPUT_PULLUP);
 
   Serial.println("Booting Shared SPI bus...");
-  // Start the shared SPI bus once
   sharedSpi.begin(SPI_SCK, SPI_MISO, SPI_MOSI, -1);
 
-  // Link the shared SPI object to the screen library before init
-  display.epd2.selectSPI(sharedSpi, SPISettings(2000000, MSBFIRST, SPI_MODE0));
+  displayLeft.epd2.selectSPI(sharedSpi, SPISettings(2000000, MSBFIRST, SPI_MODE0));
+  displayRight.epd2.selectSPI(sharedSpi, SPISettings(2000000, MSBFIRST, SPI_MODE0));
   
   Serial.println("Initializing display...");
-  display.init(115200, true, 50, false);
+  displayLeft.init(115200, true, 50, false);
+  displayRight.init(115200, true, 50, false);
 
   Serial.println("Pinging card...");
-  // Pass the sharedSpi object to the SD library
   if(!SD.begin(SD_CS_PIN, sharedSpi, 1000000)) {
     Serial.println("[ERROR]: Mount Failed. Board is physically unresponsive.");
     return;
@@ -54,27 +64,38 @@ void setup() {
   Serial.println("[SUCCESS]: Card Mounted!");
 
   Serial.println("Executing full page refresh...");
-  display.setRotation(1);
-  display.setFont(&FreeMonoBold9pt7b);
-  display.setTextColor(GxEPD_BLACK);
+  displayLeft.setRotation(1);
+  displayLeft.setFont(&OxProto_Regular14pt7b);
+  displayLeft.setTextColor(GxEPD_BLACK);
 
-  display.setFullWindow();
-  display.firstPage();
+  displayLeft.setFullWindow();
+  displayLeft.firstPage();
+
+  displayRight.setRotation(1);
+  displayRight.setFont(&OxProto_Regular14pt7b);
+  displayRight.setTextColor(GxEPD_BLACK);
+
+  displayRight.setFullWindow();
+  displayRight.firstPage();
 
   uint64_t cardSize = SD.cardSize() / (1024 * 1024);
 
   do {
-    display.fillScreen(GxEPD_WHITE);
-    display.setCursor(20, 50);
-    // FIX 2: Use printf instead of print for formatting strings!
-    display.printf("Size: %llu MB", cardSize);
-  } while (display.nextPage());
+    displayLeft.fillScreen(GxEPD_WHITE);
+    displayLeft.setCursor(20, 50);
+    displayLeft.printf("Size: %llu MB", cardSize);
+
+    displayRight.fillScreen(GxEPD_WHITE);
+    displayRight.setCursor(20, 50);
+    displayRight.printf("Initializing right display after left");
+
+  } while (displayLeft.nextPage());
   
-  display.hibernate();
+  displayLeft.hibernate();
+  displayRight.hibernate();
 
   Serial.printf("Size: %llu MB\n", cardSize);
 }
 
 void loop() {
-  // Silent loop
 }
