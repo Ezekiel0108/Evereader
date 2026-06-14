@@ -21,7 +21,7 @@
 
 //Right screen pin definitions
 #define DC_R_PIN   8
-#define RES_R_PIN  3
+#define RES_R_PIN  15
 #define BUSY_R_PIN 18
 #define SCREEN_R_CS_PIN 7
 
