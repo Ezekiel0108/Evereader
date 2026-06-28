@@ -7,11 +7,13 @@
 
 // Shared SPI pins
 #define SPI_SCK  12
-#define SPI_MISO 13
 #define SPI_MOSI 11
 
-// Sd specific pins
-#define SD_CS_PIN     6
+// SD pins
+#define SD_SCK_PIN  14
+#define SD_MISO_PIN 17
+#define SD_MOSI_PIN  6
+#define SD_CS_PIN    16
 
 //Left screen pin definitions
 #define DC_L_PIN   9
@@ -26,6 +28,7 @@
 #define SCREEN_R_CS_PIN 7
 
 SPIClass sharedSpi = SPIClass(FSPI);
+SPIClass sdSpi = SPIClass(HSPI);
 
 // Left display init
 GxEPD2_BW<GxEPD2_420_GDEY042T81, GxEPD2_420_GDEY042T81::HEIGHT> displayLeft(
@@ -42,12 +45,15 @@ void setup() {
   Serial.begin(115200);
   for(int i = 3; i > 0; i--) { delay(1000); }
   
-  pinMode(SPI_MISO, INPUT_PULLUP);
+  pinMode(SD_MISO_PIN, INPUT_PULLUP);
   pinMode(BUSY_L_PIN, INPUT_PULLUP);
   pinMode(BUSY_R_PIN, INPUT_PULLUP);
 
   Serial.println("Booting Shared SPI bus...");
-  sharedSpi.begin(SPI_SCK, SPI_MISO, SPI_MOSI, -1);
+  sharedSpi.begin(SPI_SCK, -1, SPI_MOSI, -1);
+
+  Serial.println("Booting SD specific SPI bus...");
+  sdSpi.begin(SD_SCK_PIN, SD_MISO_PIN, SD_MOSI_PIN, -1);
 
   displayLeft.epd2.selectSPI(sharedSpi, SPISettings(2000000, MSBFIRST, SPI_MODE0));
   displayRight.epd2.selectSPI(sharedSpi, SPISettings(2000000, MSBFIRST, SPI_MODE0));
@@ -57,7 +63,7 @@ void setup() {
   displayRight.init(115200, true, 50, false);
 
   Serial.println("Pinging card...");
-  if(!SD.begin(SD_CS_PIN, sharedSpi, 1000000)) {
+  if(!SD.begin(SD_CS_PIN, sdSpi, 1000000)) {
     Serial.println("[ERROR]: Mount Failed. Board is physically unresponsive.");
     return;
   }
@@ -77,7 +83,7 @@ void setup() {
   do {
     displayLeft.fillScreen(GxEPD_WHITE);
     displayLeft.setCursor(20, 50);
-    displayLeft.printf("Size: %llu MB", cardSize);
+    displayLeft.printf("Left Screen!");
 
   } while (displayLeft.nextPage());
 
@@ -94,7 +100,7 @@ void setup() {
   do {
     displayRight.fillScreen(GxEPD_WHITE);
     displayRight.setCursor(20, 50);
-    displayRight.printf("Initializing right display after left");
+    displayRight.printf("Right Screen!");
 
   } while (displayRight.nextPage());
 
