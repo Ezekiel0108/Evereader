@@ -5,6 +5,11 @@
 #include <SPI.h>
 #include <OxProto_Regular14pt7b.h>
 
+//Button pins
+#define BUTTON_PIN_1 35
+#define BUTTON_PIN_2 36
+#define BUTTON_PIN_3 37
+
 // Shared SPI pins
 #define SPI_SCK  12
 #define SPI_MOSI 11
@@ -27,6 +32,13 @@
 #define BUSY_R_PIN 18
 #define SCREEN_R_CS_PIN 7
 
+int b1_state;
+int b2_state;
+int b3_state;
+int b1_state_prev = HIGH;
+int b2_state_prev = HIGH;
+int b3_state_prev = HIGH;
+
 SPIClass sharedSpi = SPIClass(FSPI);
 SPIClass sdSpi = SPIClass(HSPI);
 
@@ -40,63 +52,23 @@ GxEPD2_BW<GxEPD2_420_GDEY042T81, GxEPD2_420_GDEY042T81::HEIGHT> displayRight(
     GxEPD2_420_GDEY042T81(SCREEN_R_CS_PIN, DC_R_PIN, RES_R_PIN, BUSY_R_PIN)
 );
 
+void home_screen_print(){
+  Serial.println("White paging everything!");
 
-void setup() {
-  Serial.begin(115200);
-  for(int i = 3; i > 0; i--) { delay(1000); }
-  
-  pinMode(SD_MISO_PIN, INPUT_PULLUP);
-  pinMode(BUSY_L_PIN, INPUT_PULLUP);
-  pinMode(BUSY_R_PIN, INPUT_PULLUP);
+  do {
+    displayRight.fillScreen(GxEPD_WHITE);
+  } while (displayRight.nextPage());
+  displayRight.hibernate();
 
-  Serial.println("Booting Shared SPI bus...");
-  sharedSpi.begin(SPI_SCK, -1, SPI_MOSI, -1);
-
-  Serial.println("Booting SD specific SPI bus...");
-  sdSpi.begin(SD_SCK_PIN, SD_MISO_PIN, SD_MOSI_PIN, -1);
-
-  displayLeft.epd2.selectSPI(sharedSpi, SPISettings(2000000, MSBFIRST, SPI_MODE0));
-  displayRight.epd2.selectSPI(sharedSpi, SPISettings(2000000, MSBFIRST, SPI_MODE0));
-  
-  Serial.println("Initializing display...");
-  displayLeft.init(115200, true, 50, false);
-  displayRight.init(115200, true, 50, false);
-
-  Serial.println("Pinging card...");
-  if(!SD.begin(SD_CS_PIN, sdSpi, 1000000)) {
-    Serial.println("[ERROR]: Mount Failed. Board is physically unresponsive.");
-    return;
-  }
-
-  Serial.println("[SUCCESS]: Card Mounted!");
-  uint64_t cardSize = SD.cardSize() / (1024 * 1024);
-
-
-  Serial.println("Executing full left page refresh...");
-  displayLeft.setRotation(1);
-  displayLeft.setFont(&OxProto_Regular14pt7b);
-  displayLeft.setTextColor(GxEPD_BLACK);
-  displayLeft.setFullWindow();
-  displayLeft.firstPage();
-
-  Serial.println("Printing to left screen");
   do {
     displayLeft.fillScreen(GxEPD_WHITE);
-    displayLeft.setCursor(20, 50);
-    displayLeft.printf("Left Screen!");
-
   } while (displayLeft.nextPage());
-
   displayLeft.hibernate();
 
-  Serial.println("Executing full right page refresh...");
-  displayRight.setRotation(1);
-  displayRight.setFont(&OxProto_Regular14pt7b);
-  displayRight.setTextColor(GxEPD_BLACK);
-  displayRight.setFullWindow();
-  displayRight.firstPage();
+}
 
-  Serial.println("Printing to right screen");
+void right_screen_print(){
+  Serial.println("Printing to right screen!");
   do {
     displayRight.fillScreen(GxEPD_WHITE);
     displayRight.setCursor(20, 50);
@@ -106,8 +78,86 @@ void setup() {
 
   displayRight.hibernate();
 
+}
+
+void left_screen_print(){
+  Serial.println("Printing to left screen!");
+  do {
+    displayLeft.fillScreen(GxEPD_WHITE);
+    displayLeft.setCursor(20, 50);
+    displayLeft.printf("Left Screen!");
+
+  } while (displayLeft.nextPage());
+
+  displayLeft.hibernate();
+
+}
+
+void setup() {
+  Serial.begin(115200);
+  for(int i = 3; i > 0; i--) { delay(1000); }
+  
+  //pinMode setup
+  pinMode(SD_MISO_PIN, INPUT_PULLUP);
+  pinMode(BUSY_L_PIN, INPUT_PULLUP);
+  pinMode(BUSY_R_PIN, INPUT_PULLUP);
+  pinMode(BUTTON_PIN_1, INPUT_PULLUP);
+  pinMode(BUTTON_PIN_2, INPUT_PULLUP);
+  pinMode(BUTTON_PIN_3, INPUT_PULLUP);
+
+  //Screens setup
+  Serial.println("Setting up right screen!");
+  displayRight.setRotation(1);
+  displayRight.setFont(&OxProto_Regular14pt7b);
+  displayRight.setTextColor(GxEPD_BLACK);
+  displayRight.setFullWindow();
+  displayRight.firstPage();
+
+  Serial.println("Printing left screen!");
+  displayLeft.setRotation(1);
+  displayLeft.setFont(&OxProto_Regular14pt7b);
+  displayLeft.setTextColor(GxEPD_BLACK);
+  displayLeft.setFullWindow();
+  displayLeft.firstPage();
+
+  //Booting up SPIs and selecting display ones
+  sharedSpi.begin(SPI_SCK, -1, SPI_MOSI, -1);
+  sdSpi.begin(SD_SCK_PIN, SD_MISO_PIN, SD_MOSI_PIN, -1);
+  displayLeft.epd2.selectSPI(sharedSpi, SPISettings(2000000, MSBFIRST, SPI_MODE0));
+  displayRight.epd2.selectSPI(sharedSpi, SPISettings(2000000, MSBFIRST, SPI_MODE0));
+  
+  //Initializing both displays
+  displayLeft.init(115200, true, 50, false);
+  displayRight.init(115200, true, 50, false);
+
+  //Card mount and display to serial
+  Serial.println("Pinging card...");
+  if(!SD.begin(SD_CS_PIN, sdSpi, 1000000)) {
+    Serial.println("[ERROR]: Mount Failed. Board is physically unresponsive.");
+    return;
+  }
+  Serial.println("[SUCCESS]: Card Mounted!");
+  uint64_t cardSize = SD.cardSize() / (1024 * 1024);
   Serial.printf("Size: %llu MB\n", cardSize);
 }
 
 void loop() {
+  b1_state = digitalRead(BUTTON_PIN_1);
+  b2_state = digitalRead(BUTTON_PIN_2);
+  b3_state = digitalRead(BUTTON_PIN_3);
+
+  if(b1_state_prev == HIGH && b1_state == LOW){
+    left_screen_print();
+  }
+  if(b2_state_prev == HIGH && b2_state == LOW){
+    home_screen_print();
+  }
+  if(b3_state_prev == HIGH && b3_state == LOW){
+    right_screen_print();
+  }
+
+  b1_state_prev = b1_state;
+  b2_state_prev = b2_state;
+  b3_state_prev = b3_state;
 }
+
