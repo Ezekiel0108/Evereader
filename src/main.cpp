@@ -6,9 +6,9 @@
 #include <OxProto_Regular14pt7b.h>
 
 //Button pins
-#define BUTTON_PIN_1 35
-#define BUTTON_PIN_2 36
-#define BUTTON_PIN_3 37
+#define BUTTON_PIN_1 1
+#define BUTTON_PIN_2 2
+#define BUTTON_PIN_3 21
 
 // Shared SPI pins
 #define SPI_SCK  12
