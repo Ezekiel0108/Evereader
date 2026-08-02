@@ -32,6 +32,8 @@
 #define BUSY_R_PIN 18
 #define SCREEN_R_CS_PIN 7
 
+GFXfont font = OxProto_Regular14pt7b;
+
 int b1_state;
 int b2_state;
 int b3_state;
@@ -108,14 +110,14 @@ void setup() {
   //Screens setup
   Serial.println("Setting up right screen!");
   displayRight.setRotation(1);
-  displayRight.setFont(&OxProto_Regular14pt7b);
+  displayRight.setFont(&font);
   displayRight.setTextColor(GxEPD_BLACK);
   displayRight.setFullWindow();
   displayRight.firstPage();
 
   Serial.println("Printing left screen!");
   displayLeft.setRotation(1);
-  displayLeft.setFont(&OxProto_Regular14pt7b);
+  displayLeft.setFont(&font);
   displayLeft.setTextColor(GxEPD_BLACK);
   displayLeft.setFullWindow();
   displayLeft.firstPage();
