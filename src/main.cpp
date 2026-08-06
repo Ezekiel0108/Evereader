@@ -20,17 +20,17 @@
 #define SD_MOSI_PIN  6
 #define SD_CS_PIN    16
 
-//Left screen pin definitions
-#define DC_L_PIN   9
-#define RES_L_PIN  5
-#define BUSY_L_PIN 4
-#define SCREEN_L_CS_PIN 10
-
 //Right screen pin definitions
-#define DC_R_PIN   8
-#define RES_R_PIN  15
-#define BUSY_R_PIN 18
-#define SCREEN_R_CS_PIN 7
+#define DC_R_PIN   9
+#define RES_R_PIN  5
+#define BUSY_R_PIN 4
+#define SCREEN_R_CS_PIN 10
+
+//Left screen pin definitions
+#define DC_L_PIN   8
+#define RES_L_PIN  15
+#define BUSY_L_PIN 18
+#define SCREEN_L_CS_PIN 7
 
 GFXfont font = OxProto_Regular14pt7b;
 
