@@ -1,0 +1,332 @@
+** Drc report for evereader.kicad_pcb **
+** Created on 2026-08-07T14:49:25 **
+** Report includes: Errors, Warnings **
+
+** Found 89 DRC violations **
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(81.7439 mm, 152.9000 mm): Track [<no net>] on F.Cu, length 0.9441 mm
+    @(82.4115 mm, 151.4750 mm): Pad A8 [<no net>] of J1 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(82.4115 mm, 152.2324 mm): Track [<no net>] on F.Cu, length 0.7574 mm
+    @(82.4115 mm, 151.4750 mm): Pad A8 [<no net>] of J1 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(79.4115 mm, 152.2324 mm): Track [<no net>] on F.Cu, length 0.9441 mm
+    @(79.4115 mm, 151.4750 mm): Pad B8 [<no net>] of J1 on F.Cu
+[solder_mask_bridge]: Front solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(79.4115 mm, 151.4750 mm): Track [<no net>] on F.Cu, length 0.7574 mm
+    @(79.4115 mm, 151.4750 mm): Pad B8 [<no net>] of J1 on F.Cu
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(48.5215 mm, 142.3700 mm): PTH pad 9 [GND] of U1
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(48.5215 mm, 143.5700 mm): PTH pad 9 [GND] of U1
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(48.5215 mm, 144.7700 mm): PTH pad 9 [GND] of U1
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(49.9215 mm, 142.3700 mm): PTH pad 9 [GND] of U1
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(49.9215 mm, 143.5700 mm): PTH pad 9 [GND] of U1
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(49.9215 mm, 144.7700 mm): PTH pad 9 [GND] of U1
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(81.0166 mm, 45.2079 mm): PTH pad 41 [GND] of U5
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(81.0166 mm, 43.8079 mm): PTH pad 41 [GND] of U5
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(80.3166 mm, 45.9079 mm): PTH pad 41 [GND] of U5
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(80.3166 mm, 44.5079 mm): PTH pad 41 [GND] of U5
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(80.3166 mm, 43.1079 mm): PTH pad 41 [GND] of U5
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(79.6166 mm, 45.2079 mm): PTH pad 41 [GND] of U5
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(79.6166 mm, 43.8079 mm): PTH pad 41 [GND] of U5
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(78.9166 mm, 45.9079 mm): PTH pad 41 [GND] of U5
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(78.9166 mm, 44.5079 mm): PTH pad 41 [GND] of U5
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(78.9166 mm, 43.1079 mm): PTH pad 41 [GND] of U5
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(78.2166 mm, 45.2079 mm): PTH pad 41 [GND] of U5
+[drill_out_of_range]: Hole size out of range (board setup constraints min hole 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints; error
+    @(78.2166 mm, 43.8079 mm): PTH pad 41 [GND] of U5
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.0549 mm)
+    Local override; error
+    @(63.4442 mm, 146.9200 mm): Track [GND] on F.Cu, length 0.6120 mm
+    @(63.9415 mm, 147.9200 mm): Pad 2 [Net-(J5-Pin_2)] of R7 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.0500 mm)
+    Local override; error
+    @(100.5115 mm, 56.2700 mm): Track [GND] on F.Cu, length 3.3126 mm
+    @(99.2115 mm, 53.3700 mm): Pad 1 [Net-(U5-IO0)] of SW4 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.0539 mm)
+    Local override; error
+    @(100.5115 mm, 52.9574 mm): Track [GND] on F.Cu, length 8.4674 mm
+    @(99.2115 mm, 53.3700 mm): Pad 1 [Net-(U5-IO0)] of SW4 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.0500 mm)
+    Local override; error
+    @(73.2865 mm, 76.1450 mm): Track [GND] on F.Cu, length 2.8500 mm
+    @(75.2615 mm, 77.1700 mm): Pad 1 [+3.3V] of C13 on F.Cu
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1985 mm)
+    Local override; error
+    @(123.1615 mm, 91.5200 mm): Via [+3.3V] on F.Cu - B.Cu
+    @(124.7915 mm, 91.0900 mm): Track [GND] on F.Cu, length 4.5707 mm
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1490 mm)
+    Local override; error
+    @(73.1115 mm, 83.4700 mm): Via [GND] on F.Cu - B.Cu
+    @(72.4265 mm, 85.2850 mm): Track [+3.3V] on F.Cu, length 2.4537 mm
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.0500 mm)
+    Local override; error
+    @(67.4915 mm, 140.9125 mm): Track [Net-(U2-OD)] on F.Cu, length 3.0675 mm
+    @(69.0097 mm, 143.0275 mm): Track [GND] on F.Cu, length 5.5048 mm
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.0500 mm)
+    Local override; error
+    @(66.0190 mm, 145.4525 mm): Track [Net-(U2-OD)] on F.Cu, length 2.2800 mm
+    @(69.0097 mm, 143.0275 mm): Track [GND] on F.Cu, length 5.5048 mm
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.0500 mm)
+    Local override; error
+    @(67.4915 mm, 143.9800 mm): Track [Net-(U2-OD)] on F.Cu, length 2.0824 mm
+    @(69.0097 mm, 143.0275 mm): Track [GND] on F.Cu, length 5.5048 mm
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.0549 mm)
+    Local override; error
+    @(54.1815 mm, 132.7700 mm): Pad 1 [Net-(U5-IO1)] of SW2 on B.Cu
+    @(56.9217 mm, 128.3200 mm): Track [GND] on B.Cu, length 5.3956 mm
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.0500 mm)
+    Local override; error
+    @(54.1815 mm, 132.7700 mm): Pad 1 [Net-(U5-IO1)] of SW2 on B.Cu
+    @(53.1065 mm, 132.1353 mm): Track [GND] on B.Cu, length 4.0597 mm
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.0500 mm)
+    Local override; error
+    @(63.9415 mm, 147.9200 mm): Pad 2 [Net-(J5-Pin_2)] of R7 on F.Cu
+    @(65.1172 mm, 146.9200 mm): Track [GND] on F.Cu, length 1.6729 mm
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.0800 mm)
+    Local override; error
+    @(62.0115 mm, 149.5700 mm): Via [Net-(D1-A)] on F.Cu - B.Cu
+    @(59.9215 mm, 150.2000 mm): Track [GND] on F.Cu, length 3.0900 mm
+[clearance]: Clearance violation ( clearance 0.2000 mm; actual 0.1675 mm)
+    Local override; error
+    @(63.0115 mm, 147.3528 mm): Track [GND] on F.Cu, length 2.8472 mm
+    @(63.9415 mm, 147.9200 mm): Pad 2 [Net-(J5-Pin_2)] of R7 on F.Cu
+[items_not_allowed]: Items not allowed
+    Local override; error
+    @(42.7765 mm, 88.1350 mm): Track [GND] on F.Cu, length 1.4849 mm
+[items_not_allowed]: Items not allowed
+    Local override; error
+    @(42.7765 mm, 77.1850 mm): Track [GND] on F.Cu, length 10.9500 mm
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(92.1615 mm, 46.9700 mm): Via [GND] on F.Cu - B.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(92.2615 mm, 48.1700 mm): Via [+3.3V] on F.Cu - B.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(127.4000 mm, 37.1000 mm): NPTH pad of REF**
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(127.4000 mm, 36.2500 mm): NPTH pad of REF**
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(127.4000 mm, 35.4000 mm): NPTH pad of REF**
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(127.4000 mm, 34.5500 mm): NPTH pad of REF**
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(127.4000 mm, 33.7000 mm): NPTH pad of REF**
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(127.4000 mm, 32.8500 mm): NPTH pad of REF**
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(127.4000 mm, 32.0000 mm): NPTH pad of REF**
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(129.1500 mm, 34.5500 mm): Footprint REF**
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(99.2115 mm, 53.3700 mm): Pad 1 [Net-(U5-IO0)] of SW4 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(99.2115 mm, 55.4700 mm): Footprint SW4
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(123.3415 mm, 31.4100 mm): NPTH pad of REF**
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(123.3415 mm, 31.4100 mm): Footprint REF**
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(81.0166 mm, 45.2079 mm): PTH pad 41 [GND] of U5
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(81.0166 mm, 43.8079 mm): PTH pad 41 [GND] of U5
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(80.3166 mm, 45.9079 mm): PTH pad 41 [GND] of U5
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(80.3166 mm, 44.5079 mm): PTH pad 41 [GND] of U5
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(80.3166 mm, 43.1079 mm): PTH pad 41 [GND] of U5
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(79.6166 mm, 45.2079 mm): PTH pad 41 [GND] of U5
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(79.6166 mm, 44.5079 mm): Pad 41 [GND] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(79.6166 mm, 43.8079 mm): PTH pad 41 [GND] of U5
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 36.7879 mm): Pad 40 [GND] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 38.0579 mm): Pad 39 [Net-(U5-IO1)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 39.3279 mm): Pad 38 [Net-(U5-IO2)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 40.5979 mm): Pad 37 [unconnected-(U5-TXD0-Pad37)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 41.8679 mm): Pad 36 [unconnected-(U5-RXD0-Pad36)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 43.1379 mm): Pad 35 [unconnected-(U5-IO42-Pad35)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 44.4079 mm): Pad 34 [unconnected-(U5-IO41-Pad34)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 45.6779 mm): Pad 33 [unconnected-(U5-IO40-Pad33)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 46.9479 mm): Pad 32 [unconnected-(U5-IO39-Pad32)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 48.2179 mm): Pad 31 [unconnected-(U5-IO38-Pad31)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 49.4879 mm): Pad 30 [unconnected-(U5-IO37-Pad30)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 50.7579 mm): Pad 29 [unconnected-(U5-IO36-Pad29)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 52.0279 mm): Pad 28 [unconnected-(U5-IO35-Pad28)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(89.8666 mm, 53.2979 mm): Pad 27 [Net-(U5-IO0)] of U5 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(81.1166 mm, 42.0479 mm): Footprint U5
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(94.1615 mm, 49.9575 mm): Pad 2 [+3.3V] of R15 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(94.1615 mm, 51.7825 mm): Pad 1 [Net-(U5-IO0)] of R15 on F.Cu
+[items_not_allowed]: Items not allowed (keepout area of U5)
+    Rule: keepout area of U5; error
+    @(94.1615 mm, 50.8700 mm): Footprint R15
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(100.7815 mm, 53.4000 mm): Segment of SW4 on F.Silkscreen
+    @(101.4615 mm, 55.4700 mm): Reference field of SW4
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(69.4640 mm, 70.6200 mm): Reference field of R13
+    @(69.7885 mm, 70.6050 mm): Segment of R12 on F.Silkscreen
+[silk_overlap]: Silkscreen clearance
+    Rule: board setup constraints silk; warning
+    @(69.7885 mm, 68.1550 mm): Segment of R14 on F.Silkscreen
+    @(69.6215 mm, 68.1500 mm): Reference field of R12
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.3915 mm, 129.2700 mm): Reference field of C7
+    @(62.2615 mm, 130.1825 mm): Pad 2 [Net-(U5-IO1)] of R18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(61.3915 mm, 129.2700 mm): Reference field of C7
+    @(62.2615 mm, 128.3575 mm): Pad 1 [+3.3V] of R18 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(69.4640 mm, 70.6200 mm): Reference field of R13
+    @(68.6490 mm, 69.8700 mm): Pad 2 [Net-(J2-DAT0)] of R12 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(69.4640 mm, 70.6200 mm): Reference field of R13
+    @(70.4740 mm, 69.8700 mm): Pad 1 [+3.3V] of R12 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(69.6215 mm, 68.1500 mm): Reference field of R12
+    @(68.6490 mm, 67.4200 mm): Pad 2 [Net-(J2-DET)] of R14 on F.Cu
+[silk_over_copper]: Silkscreen clipped by solder mask
+    Local override; warning
+    @(69.6215 mm, 68.1500 mm): Reference field of R12
+    @(70.4740 mm, 67.4200 mm): Pad 1 [+3.3V] of R14 on F.Cu
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(125.3915 mm, 77.2300 mm): Track [GND] on B.Cu, length 1.6263 mm
+[track_dangling]: Track has unconnected end
+    Local override; warning
+    @(58.9265 mm, 84.1850 mm): Track [/CS] on F.Cu, length 0.8000 mm
+
+** Found 5 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(77.1815 mm, 137.2700 mm): Track [GND] on B.Cu, length 7.9600 mm
+    @(77.3415 mm, 142.5750 mm): Track [GND] on F.Cu, length 3.3093 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(122.8115 mm, 79.8100 mm): Track [GND] on F.Cu, length 2.0223 mm
+    @(100.5115 mm, 56.2700 mm): Track [GND] on F.Cu, length 3.3126 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(76.8415 mm, 152.3900 mm): PTH pad SH [Net-(J1-SHIELD)] of J1
+    @(74.3140 mm, 152.4800 mm): Track [Net-(J1-SHIELD)] on F.Cu, length 1.5625 mm
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(85.4815 mm, 152.3900 mm): PTH pad SH [Net-(J1-SHIELD)] of J1
+    @(76.8415 mm, 152.3900 mm): PTH pad SH [Net-(J1-SHIELD)] of J1
+[unconnected_items]: Missing connection between items
+    Local override; error
+    @(85.4815 mm, 156.5700 mm): PTH pad SH [Net-(J1-SHIELD)] of J1
+    @(85.4815 mm, 152.3900 mm): PTH pad SH [Net-(J1-SHIELD)] of J1
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+
+** End of Report **
