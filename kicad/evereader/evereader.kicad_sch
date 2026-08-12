@@ -15109,25 +15109,25 @@
 		(fields_autoplaced yes)
 		(uuid "b84abf15-fb66-43d6-bfb1-de275664f819")
 		(property "Reference" "C5"
-			(at 331.47 48.2538 0)
+			(at 336.55 45.7135 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "1μF"
-			(at 331.47 45.7138 0)
+		(property "Value" "100μF"
+			(at 336.55 48.2535 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
